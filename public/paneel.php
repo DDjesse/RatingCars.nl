@@ -1,6 +1,6 @@
 <?php
-// Include de databaseverbinding
-include '../includes/db.php';  // Zorg ervoor dat dit bestand de $conn variabele definieert
+include '../includes/db.php';  // Dit bestand zou de verbinding moeten initialiseren
+
 
 // Like of dislike bijwerken
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -91,5 +91,5 @@ $result = $conn->query($sql);
 </html>
 
 <?php
-$conn->close();  // Sluit de verbinding na gebruik
+$conn->close();
 ?>
