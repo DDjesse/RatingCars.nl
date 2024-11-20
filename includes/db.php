@@ -1,15 +1,15 @@
 <?php
-// Verbind met de database
-$servername = "localhost";
-$username = "root";  // Gebruik je eigen database gebruikersnaam
-$password = "";      // Gebruik je eigen wachtwoord
-$dbname = "Autoposts"; // De naam van je database
+// Database-instellingen
+$host = 'localhost'; // Of je eigen database host
+$dbname = 'Autoposts'; // Jouw database naam
+$username = 'root'; // Database gebruikersnaam
+$password = ''; // Database wachtwoord
 
-// Maak de verbinding
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Controleer of de verbinding gelukt is
-if ($conn->connect_error) {
-    die("Verbinding mislukt: " . $conn->connect_error);
+// Verbinding maken met de database
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Foutmeldingen inschakelen
+} catch (PDOException $e) {
+    die("Databaseverbinding mislukt: " . $e->getMessage());
 }
 ?>
