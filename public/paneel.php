@@ -1,4 +1,12 @@
 <?php
+session_start(); // Zorg ervoor dat de sessie is gestart
+
+// Controleer of de gebruiker is ingelogd en een admin is
+if (!isset($_SESSION['gebruikersnaam']) || $_SESSION['role'] !== 'admin') {
+    header('Location: login.php'); // Als de gebruiker niet ingelogd is of geen admin is, stuur naar loginpagina
+    exit;
+}
+
 require_once '../includes/db.php';
 
 // Variabelen voor foutmeldingen en succes
@@ -40,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -56,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <nav class="menu">
             <a href="index.php">Home</a>
             <a href="Paneel.php">Paneel</a>
-            <a href="#">Uitloggen</a>
+            <a href="logout.php">Uitloggen</a>
         </nav>
     </header>
 

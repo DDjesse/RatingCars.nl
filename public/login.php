@@ -11,17 +11,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute(['gebruikersnaam' => $gebruikersnaam]);
     $account = $stmt->fetch();
 
-    // Controleer of het wachtwoord klopt
+    // Controleer of het wachtwoord klopt en of de gebruiker een admin is
     if ($account && password_verify($wachtwoord, $account['wachtwoord'])) {
         session_start();
+        $_SESSION['id'] = $account['id'];  // Sla de gebruiker ID op in de sessie
         $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-        header('Location: ../public/index.php');
+        $_SESSION['role'] = $account['role'];  // Sla de rol van de gebruiker op in de sessie
+
+        // Als de gebruiker een admin is, stuur door naar de admin-pagina, anders naar de gewone index
+        if ($_SESSION['role'] === 'admin') {
+            header('Location: ../public/paneel.php');  // Redirect naar de admin pagina
+        } else {
+            header('Location: ../public/index.php');  // Redirect naar de gewone homepage
+        }
         exit;
     } else {
         $foutmelding = 'Ongeldige gebruikersnaam of wachtwoord';
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="nl">

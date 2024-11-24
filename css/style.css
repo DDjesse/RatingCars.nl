@@ -206,3 +206,67 @@ h2 {
     text-align: center; /* Center de tekst van de titel */
     margin-bottom: 20px; /* Voeg een beetje ruimte onder de titel toe */
 }
+.post a {
+    text-decoration: none;
+    color: blue;
+    margin-right: 10px;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+.vote-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Ruimte tussen like en dislike knoppen */
+}
+
+.vote-btn {
+    font-size: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Ruimte tussen het icoon en het nummer */
+    transition: color 0.3s ease;
+}
+
+.vote-btn.like {
+    color: grey;
+}
+
+.vote-btn.like:hover {
+    color: green;
+}
+
+.vote-btn.dislike {
+    color: grey;
+}
+
+.vote-btn.dislike:hover {
+    color: red;
+}
+
+.vote-btn span {
+    font-size: 18px;
+    color: #000; /* Standaard tekstkleur */
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+}
+
+.post {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.post h3 {
+    margin-bottom: 10px;
+}
+
+.post p {
+    margin: 5px 0;
+}
